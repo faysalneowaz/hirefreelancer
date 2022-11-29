@@ -5,6 +5,7 @@ A new Flutter project.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
+![design](https://raw.githubusercontent.com/faysalneowaz/hirefreelancer/main/assets/maindesign.webp)
 
 A few resources to get you started if this is your first Flutter project:
 
