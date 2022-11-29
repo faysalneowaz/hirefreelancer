@@ -65,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Alignment.center, //set the button's child Alignment
                   ),
                   onPressed: () =>
-                      {}, //set both onPressed and onLongPressed to null to see the disabled properties
+                      {}, //set onPressed to null to see the disabled properties
                   child: const Text(
                     'Get Started',
                     style: TextStyle(
