@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:hirefreelancer/constant.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +21,35 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               TopRow(),
+              Text(
+                "Search for freelancer",
+                style: TextStyle(
+                  color: blackColor,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    "Popular Categories",
+                    style: TextStyle(
+                      color: blackColor,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      color: darkgrayColor,
+                    ),
+                    child: Icon(
+                      Icons.more_horiz,
+                      color: blackColor,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
