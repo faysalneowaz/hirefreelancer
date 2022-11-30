@@ -29,6 +29,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
+              //search box
+              Row(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        hintText: "Search freelancher",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0))),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: grayColor,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Icon(
+                      Icons.mic,
+                      color: blackColor,
+                    ),
+                  ),
+                ],
+              ),
+
+              //popular categories
               Row(
                 children: [
                   Text(
