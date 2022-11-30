@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:hirefreelancer/constant.dart';
 import 'package:intl/intl.dart';
@@ -17,11 +15,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.all(18.0),
           child: Column(
             children: [
-              TopRow(),
-              Text(
+              const TopRow(),
+              const SizedBox(
+                height: 20.0,
+              ),
+              const Text(
                 "Search for freelancer",
                 style: TextStyle(
                   color: blackColor,
@@ -29,25 +32,36 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
+              const SizedBox(
+                height: 20.0,
+              ),
               //search box
               Row(
                 children: [
-                  TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        hintText: "Search freelancher",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0))),
+                  Expanded(
+                    flex: 3,
+                    child: TextField(
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.search),
+                          hintText: "Search freelancher",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(28.0))),
+                    ),
                   ),
                   Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: grayColor,
                         width: 1.0,
                       ),
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.mic,
                       color: blackColor,
                     ),
@@ -55,28 +69,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
 
+              const SizedBox(
+                height: 10.0,
+              ),
               //popular categories
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Popular Categories",
                     style: TextStyle(
-                      color: blackColor,
-                      fontSize: 14,
-                    ),
+                        color: blackColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700),
                   ),
                   Container(
-                    padding: EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(5.0),
                     decoration: BoxDecoration(
-                      color: darkgrayColor,
+                      color: grayColor,
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.more_horiz,
                       color: blackColor,
                     ),
                   ),
                 ],
               ),
+
+              //list of categories
             ],
           ),
         ),
