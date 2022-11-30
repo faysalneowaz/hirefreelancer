@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hirefreelancer/constant.dart';
+import 'package:hirefreelancer/widgets/button.dart';
+import 'package:hirefreelancer/screens/homescreen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -41,38 +43,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               Container(
                 alignment: Alignment.center,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shadowColor:
-                        Colors.black, //specify the button's elevation color
-                    elevation: 4.0, //buttons Material shadow
-                    padding: const EdgeInsets.only(
-                        top: 4.0,
-                        bottom: 4.0,
-                        right: 8.0,
-                        left: 8.0), //specify the button's Padding
-                    minimumSize: Size(
-                      MediaQuery.of(context).size.width / 1.2,
-                      MediaQuery.of(context).size.width / 6,
-                    ), //specify the button's first: width and second: height
-
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            15.0)), //used to construct ButtonStyle.mouseCursor
-
-                    alignment:
-                        Alignment.center, //set the button's child Alignment
-                  ),
-                  onPressed: () =>
-                      {}, //set onPressed to null to see the disabled properties
-                  child: const Text(
-                    'Get Started',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: whiteColor,
-                    ),
-                  ),
+                child: Button(
+                  bgColor: primaryColor,
+                  shColor: blackColor,
+                  elevation: 4.0,
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  height: MediaQuery.of(context).size.width / 6,
+                  radius: 15.0,
+                  btntext: "Get Started",
+                  txtColor: whiteColor,
+                  ontap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
+                  },
                 ),
               ),
               Container(
