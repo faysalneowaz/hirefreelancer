@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hirefreelancer/constant.dart';
 import 'package:hirefreelancer/widgets/button.dart';
-import 'package:hirefreelancer/screens/homescreen.dart';
+import 'package:hirefreelancer/screens/dashboardscreen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -56,7 +56,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => const DashboardScreen(),
                       ),
                     );
                   },
