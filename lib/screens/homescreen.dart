@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hirefreelancer/constant.dart';
 import 'package:hirefreelancer/model/freelancheronrisemodel.dart';
 import 'package:hirefreelancer/screens/bodywidget/toprowhomescreen.dart';
+import 'package:hirefreelancer/widgets/headingwidget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -118,194 +119,182 @@ class _HomeScreenState extends State<HomeScreen> {
           HeadingWidget(
             text: "Freelancher on Rise",
           ),
-          Expanded(
-            child: ListView.builder(
-                itemCount: freelanceronrise.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(8.0),
-                    margin: const EdgeInsets.only(
-                      // bottom: 5.0,
-                      top: 15.0,
-                    ),
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1.0, color: grayColor),
-                        borderRadius: BorderRadius.circular(15.0)),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(35),
-                              child: Image.network(
-                                freelanceronrise[index].strimage,
-                                height: 60,
-                                width: 60,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  freelanceronrise[index].strname,
-                                  style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: blackColor),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    const Icon(
-                                      Icons.star_outline,
-                                      size: 15,
-                                      color: yellowColor,
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                          style: TextStyle(color: yellowColor),
-                                          text:
-                                              "${freelanceronrise[index].star}",
-                                          children: [
-                                            TextSpan(
-                                                text:
-                                                    " (${freelanceronrise[index].starcount})")
-                                          ]),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: IconButton(
-                                    color: secondaryColor,
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                        Icons.favorite_border_outlined)),
-                              ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 8.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  freelanceronrise[index].strtype,
-                                  style: const TextStyle(
-                                      color: blackColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                const Text(
-                                  "Freelancher type",
-                                  style: TextStyle(
-                                    color: darkgrayColor,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "${freelanceronrise[index].joined}",
-                                  style: const TextStyle(
-                                      color: blackColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                const Text(
-                                  "Joined",
-                                  style: TextStyle(
-                                    color: darkgrayColor,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "${freelanceronrise[index].totalclient}",
-                                  style: const TextStyle(
-                                      color: blackColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                const Text(
-                                  "Total Clients",
-                                  style: TextStyle(
-                                    color: darkgrayColor,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                }),
-          ),
+          FreelancherOnRiseList(),
         ],
       ),
     );
   }
 }
 
-class HeadingWidget extends StatelessWidget {
-  String text;
-  HeadingWidget({
+class FreelancherOnRiseList extends StatelessWidget {
+  const FreelancherOnRiseList({
     Key? key,
-    required this.text,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          text,
-          style: const TextStyle(
-              color: blackColor, fontSize: 16, fontWeight: FontWeight.w700),
-        ),
-        Container(
-          padding: const EdgeInsets.all(5.0),
-          decoration: BoxDecoration(
-            color: grayColor,
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          child: const Icon(
-            Icons.more_horiz,
-            color: blackColor,
-          ),
-        ),
-      ],
+    return Expanded(
+      child: ListView.builder(
+          itemCount: freelanceronrise.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (context) {
+                      return Container();
+                    });
+              },
+              child: Container(
+                padding: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.only(
+                  // bottom: 5.0,
+                  top: 15.0,
+                ),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1.0, color: grayColor),
+                    borderRadius: BorderRadius.circular(15.0)),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(35),
+                          child: Image.network(
+                            freelanceronrise[index].strimage,
+                            height: 60,
+                            width: 60,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              freelanceronrise[index].strname,
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: blackColor),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const Icon(
+                                  Icons.star_outline,
+                                  size: 15,
+                                  color: yellowColor,
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                      style:
+                                          const TextStyle(color: yellowColor),
+                                      text: "${freelanceronrise[index].star}",
+                                      children: [
+                                        TextSpan(
+                                            text:
+                                                " (${freelanceronrise[index].starcount})")
+                                      ]),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                                color: secondaryColor,
+                                onPressed: () {},
+                                icon:
+                                    const Icon(Icons.favorite_border_outlined)),
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              freelanceronrise[index].strtype,
+                              style: const TextStyle(
+                                  color: blackColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Text(
+                              "Freelancher type",
+                              style: TextStyle(
+                                color: darkgrayColor,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${freelanceronrise[index].joined}",
+                              style: const TextStyle(
+                                  color: blackColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Text(
+                              "Joined",
+                              style: TextStyle(
+                                color: darkgrayColor,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${freelanceronrise[index].totalclient}",
+                              style: const TextStyle(
+                                  color: blackColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Text(
+                              "Total Clients",
+                              style: TextStyle(
+                                color: darkgrayColor,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
     );
   }
 }
