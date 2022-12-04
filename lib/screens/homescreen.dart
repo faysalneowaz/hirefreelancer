@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hirefreelancer/constant.dart';
 import 'package:hirefreelancer/model/freelancheronrisemodel.dart';
 import 'package:hirefreelancer/screens/bodywidget/toprowhomescreen.dart';
+import 'package:hirefreelancer/widgets/button.dart';
 import 'package:hirefreelancer/widgets/headingwidget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -415,6 +416,36 @@ class FreelancherOnRiseList extends StatelessWidget {
                           // ),
                         );
                       }),
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Button(
+                      bgColor: primaryColor,
+                      shColor: blackColor,
+                      elevation: 4.0,
+                      height: MediaQuery.of(context).size.height / 12,
+                      width: MediaQuery.of(context).size.width / 2.2,
+                      radius: 15.0,
+                      btntext: "Hire ${freelanceronrise[index].strname}",
+                      txtColor: whiteColor,
+                      ontap: () {},
+                    ),
+                    Button(
+                      bgColor: secondaryColor,
+                      shColor: blackColor,
+                      elevation: 4.0,
+                      height: MediaQuery.of(context).size.height / 12,
+                      width: MediaQuery.of(context).size.width / 2.2,
+                      radius: 15.0,
+                      btntext: "Message",
+                      txtColor: whiteColor,
+                      ontap: () {},
+                    ),
+                  ],
                 ),
               ],
             ),
