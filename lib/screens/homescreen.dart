@@ -139,12 +139,7 @@ class FreelancherOnRiseList extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (context) {
-                      return Container();
-                    });
+                _showmodalbottomsheet(context, index);
               },
               child: Container(
                 padding: const EdgeInsets.all(8.0),
@@ -296,5 +291,134 @@ class FreelancherOnRiseList extends StatelessWidget {
             );
           }),
     );
+  }
+
+  Future<dynamic> _showmodalbottomsheet(BuildContext context, int index) {
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
+          return Container(
+            margin: const EdgeInsets.only(top: 60),
+            padding: const EdgeInsets.all(12.0),
+            decoration: const BoxDecoration(
+              color: whiteColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0),
+              ),
+            ),
+            child: Column(
+              children: [
+                Container(
+                  height: 4,
+                  width: 50,
+                  margin: const EdgeInsets.only(bottom: 10.0),
+                  decoration: BoxDecoration(
+                    color: darkgrayColor,
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(65),
+                  child: Image.network(
+                    freelanceronrise[index].strimage,
+                    height: 120,
+                    width: 120,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(
+                  height: 12.0,
+                ),
+                Text(
+                  freelanceronrise[index].strname,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: blackColor),
+                ),
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text(
+                  freelanceronrise[index].strtype,
+                  style: const TextStyle(
+                      color: darkgrayColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: RichText(
+                    textAlign: TextAlign.justify,
+                    text: TextSpan(
+                      text: "Bio",
+                      style: const TextStyle(
+                        color: blackColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "\n${freelanceronrise[index].strbio}",
+                          style: const TextStyle(
+                            color: darkgrayColor,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    "Recent Work",
+                    style: TextStyle(
+                      color: blackColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.centerLeft,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: freelanceronrise[index].recentworks.length,
+                      itemBuilder: (c, i) {
+                        return Container(
+                          height: 80,
+                          width: 100,
+                          margin: const EdgeInsets.only(right: 18.0),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: grayColor,
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Image.network(
+                            freelanceronrise[index].recentworks[i],
+                            fit: BoxFit.fill,
+                          ),
+                          // ClipRRect(
+                          //   borderRadius: BorderRadius.circular(15),
+                          //   child: Image.network(
+                          //     freelanceronrise[index].recentworks[i],
+                          //     height: 120,
+                          //     width: 120,
+                          //     fit: BoxFit.fitWidth,
+                          //   ),
+                          // ),
+                        );
+                      }),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
